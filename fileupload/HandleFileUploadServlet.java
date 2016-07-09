@@ -34,19 +34,19 @@ public class HandleFileUploadServlet extends HttpServlet {
 	
 	private String path;
 	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public HandleFileUploadServlet() {
-        super();
-    	// 1: HandleFileUploadServlet - only happens once
-    }
+    	/**
+     	 * @see HttpServlet#HttpServlet()
+     	 */
+    	public HandleFileUploadServlet() {
+        	super();
+    		// 1: HandleFileUploadServlet - only happens once
+    	}
 
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-    	// 2: INIT - only happens once
+    		// 2: INIT - only happens once
 		root = File.listRoots()[0].getAbsolutePath();
 		path = root + PATH;
 	}
@@ -68,30 +68,30 @@ public class HandleFileUploadServlet extends HttpServlet {
 
 			// Get the file part HTTP header
 			Part filePart = request.getPart("file");
-		    String fileName = filePart.getSubmittedFileName();
-		    System.out.println("[FILENAME] " + fileName);
+		    	String fileName = filePart.getSubmittedFileName();
+		    	System.out.println("[FILENAME] " + fileName);
 
-		    // Set up the final file destination
-		    String filePath = path + File.separator + fileName;
-		    System.out.println("[PATH] " + filePath);		    
-		    File file = new File(filePath);
-		    file.getParentFile().mkdirs();
+		    	// Set up the final file destination
+		    	String filePath = path + File.separator + fileName;
+		    	System.out.println("[PATH] " + filePath);		    
+		    	File file = new File(filePath);
+		    	file.getParentFile().mkdirs();
 
-	        if (!file.exists()){
-	            file.createNewFile();
-	        }
+	        	if (!file.exists()){
+	            		file.createNewFile();
+	        	}
 	
-		    OutputStream out = new FileOutputStream(file);
-		    InputStream fileContent = filePart.getInputStream();
+		    	OutputStream out = new FileOutputStream(file);
+		    	InputStream fileContent = filePart.getInputStream();
 		    
-		    // Do the actual write
-		    IOUtils.copy(fileContent, out);
+		    	// Do the actual write
+		    	IOUtils.copy(fileContent, out);
 		    
-		    out.flush();
-		    out.close();
-		    fileContent.close();
+		    	out.flush();
+		    	out.close();
+		    	fileContent.close();
 		    
-		    response.setStatus(HttpServletResponse.SC_OK);
+		    	response.setStatus(HttpServletResponse.SC_OK);
 			doGet(request, response);
 		}
 		else {
