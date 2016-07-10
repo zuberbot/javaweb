@@ -54,8 +54,7 @@ app.controller('deviceCtrl', function($scope, $http) {
 
     $scope.getResponse = function() {
 
-	var url = "http://zpattern.com/SpringWeb/SpringMvc/locations?eventId=" + $scope.eventId;
-	//var url = "http://localhost:8080/SpringWeb/SpringMvc/locations?eventId=" + $scope.eventId;
+	var url = "http://localhost:8080/SpringWeb/SpringMvc/locations?eventId=" + $scope.eventId;
 
 	// $http.get() reads static JSON data from url
 
